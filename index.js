@@ -88,7 +88,12 @@ function generateArgs(options) {//generate command line options in a format that
         continue;
       }
 
-      op = '--' + op.replace(/([A-Z])/g, '-$1').toLowerCase();
+      if (op === 'importPath') {
+        op = '-I'
+      } else {
+        op = '--' + op.replace(/([A-Z])/g, '-$1').toLowerCase();
+      }
+
       if (value === true) {
          args.push(op);
          continue;
